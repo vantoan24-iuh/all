@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <title>Phone List</title>
+</head>
+<body>
+<div class="container">
+    <div>
+        <a th:href="@{/logout}">Dang Xuat</a>
+        <h1>Phone List</h1>
+        <a class="btn btn-success" th:href="@{/dt/add}">+ Add Phone</a>
+    </div>
+
+    <!-- Search form -->
+    <form class="d-flex mt-3" th:action="@{/dt/search}" method="get">
+        <input class="form-control me-2" type="search" name="id" placeholder="Search by ID" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+    <table class="table">
+        <thead class="table-info">
+        <tr>
+            <th>Mã DT</th>
+            <th>Tên DT</th>
+            <th>Địa Chỉ</th>
+            <th>Giá Vốn</th>
+            <th>Loại</th>
+            <th>Nhà Cung Cấp</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="phone : ${phones}">
+            <td th:text="${phone.id}">1</td>
+            <td th:text="${phone.tenDT}">Tên điện thoại</td>
+            <td th:text="${phone.diaChi}">Địa chỉ</td>
+            <td th:text="${phone.giaVon}">0</td>
+            <td th:text="${phone.loai}">Loại</td>
+            <td th:text="${phone.nhaCungCap}">Nhà cung cấp</td>
+            <td>
+                <a class="btn btn-primary me-3" th:href="@{/dt/admin/edit/{id} (id=${phone.id})}">Edit</a>
+                <a class="btn btn-danger" th:href="@{/dt/admin/delete/{id} (id=${phone.id})}" >Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+

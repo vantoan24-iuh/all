@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<h1>Form</h1>
+<form th:action="@{/phones/save}" th:object="${phone}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label for="name">Phone Name:</label>
+    <input type="text" th:field="*{name}" id="name" required>
+    <br>
+    <label for="address">Address:</label>
+    <input type="text" th:field="*{address}" id="address" required>
+    <br>
+    <label for="price">Price:</label>
+    <input type="number" th:field="*{price}" id="price" required>
+    <br>
+    <label for="category">Category:</label>
+    <input type="text" th:field="*{category}" id="category" required>
+    <br>
+    <label for="supplier">Supplier:</label>
+    <input type="text" th:field="*{supplier}" id="supplier" required>
+    <br>
+    <button type="submit">Save</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+<a th:href="@{/logout}">Dang Xuat</a>
+<h1>Dashboard</h1>
+<a th:href="@{/user/phones/add_new}">Add New</a>
+<table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Phone Name</td>
+            <td>Address</td>
+            <td>Price</td>
+            <td>Category</td>
+            <td>Supplier</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="phone: ${phones}">
+            <td th:text="${phone.id}"></td>
+            <td th:text="${phone.name}"></td>
+            <td th:text="${phone.address}"></td>
+            <td th:text="${phone.price}"></td>
+            <td th:text="${phone.category}"></td>
+            <td th:text="${phone.supplier}"></td>
+            <td>
+                <a th:href="@{/admin/phones/{id}/edit(id=${phone.id})}">Edit</a>
+                <a th:href="@{/admin/phones/{id}/delete(id=${phone.id})}">Delete</a>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
